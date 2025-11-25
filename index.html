@@ -11,14 +11,13 @@
         :root{--p:#e2136e;--d:#0f0f1e;--g:#25d366;--b:#0088cc;--y:#f0b90b;--grad:linear-gradient(135deg,#667eea,#764ba2);}
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif;}
         body{background:var(--grad);min-height:100vh;color:#fff;display:flex;align-items:center;justify-content:center;padding:12px 8px;}
-        
+       
         .container{
             max-width:420px;width:100%;background:rgba(255,255,255,0.98);border-radius:32px;overflow:hidden;
             box-shadow:0 25px 60px rgba(0,0,0,0.4);backdrop-filter:blur(12px);
             animation:fadeIn 0.8s ease;
         }
         @keyframes fadeIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
-
         header{background:var(--d);padding:30px 20px;text-align:center;position:relative;overflow:hidden;}
         header::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent);animation:shine 10s infinite;}
         @keyframes shine{0%{transform:translate(0,0)}100%{transform:translate(50%,50%)}}
@@ -26,10 +25,8 @@
         .tagline{font-size:16px;opacity:0.9;}
         .stock{background:#ff3f34;padding:8px 18px;border-radius:50px;font-weight:700;display:inline-block;margin-top:14px;animation:pulse 2s infinite;}
         @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-
         .content{padding:26px 20px;}
         .section-title{font-size:19px;font-weight:600;text-align:center;margin:20px 0 18px;color:#222;}
-
         .mail-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:26px;}
         .mail-card{
             background:#fff;border-radius:22px;padding:20px;text-align:center;cursor:pointer;transition:all 0.3s;
@@ -41,20 +38,23 @@
         .mail-name{font-size:18px;font-weight:600;color:#222;margin:10px 0;}
         .price{font-size:34px;font-weight:900;color:var(--p);}
 
-        /* কাস্টম কোয়ান্টিটি ইনপুট */
+        /* এখান থেকে ফিক্স করা হয়েছে */
         .qty-input-wrapper{
-            margin:28px 0;text-align:center;
+            margin:32px 0;text-align:center;
         }
         .qty-input-wrapper label{
-            display:block;font-size:17px;color:#333;margin-bottom:12px;font-weight:600;
+            display:block;font-size:18px;color:#222;margin-bottom:14px;font-weight:600;
         }
         #customQty{
-            width:100%;max-width:280px;padding:18px 20px;font-size:28px;font-weight:900;
+            width:100%;max-width:300px;padding:20px 24px;font-size:32px;font-weight:900;
             text-align:center;border:none;border-radius:50px;background:#f8f9fa;
-            box-shadow:inset 0 4px 15px rgba(0,0,0,0.1);color:var(--p);
-            outline:none;transition:0.3s;
+            box-shadow:inset 0 5px 18px rgba(0,0,0,0.12);color:var(--p);
+            outline:none;transition:all 0.3s;
         }
-        #customQty:focus{background:#fff;box-shadow:0 0 0 4px rgba(226,19,110,0.2);}
+        #customQty:focus{
+            background:#fff;box-shadow:0 0 0 5px rgba(226,19,110,0.25);
+            transform:scale(1.04);
+        }
 
         .total-card{
             background:linear-gradient(135deg,var(--p),#ff6b9d);color:#fff;padding:24px;border-radius:24px;text-align:center;margin:28px 0;
@@ -82,15 +82,13 @@
         input{width:100%;padding:18px;margin:14px 0;border:2px solid #ddd;border-radius:18px;font-size:17px;}
         .submit-btn{background:var(--p);color:#fff;border:none;padding:20px;border-radius:18px;font-size:19px;font-weight:600;cursor:pointer;width:100%;margin-top:18px;box-shadow:0 8px 25px rgba(226,19,110,0.4);transition:0.3s;}
         .submit-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(226,19,110,0.5);}
-
         .float-wa{position:fixed;bottom:22px;right:22px;background:#25d366;color:#fff;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:99;animation:float 3s infinite;}
         .float-tg{bottom:96px;background:#0088cc;box-shadow:0 10px 30px rgba(0,136,204,0.5);}
         @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-
         @media(max-width:380px){
             .container{border-radius:26px;}
             header h1{font-size:25px;}
-            #customQty{font-size:24px;padding:16px;}
+            #customQty{font-size:26px;padding:16px;}
             #total{font-size:46px;}
         }
     </style>
@@ -115,19 +113,19 @@
             <div class="mail-card" onclick="select('Hotmail Premium',3)">
                 <i class="fas fa-envelope-open" style="color:#ff8c00;"></i>
                 <div class="mail-name">Hotmail Premium</div>
-                <div class="price">২ টাকা</div>
+                <div class="price">৩ টাকা</div>
             </div>
             <div class="mail-card" onclick="select('.EDU Mail (USA)',5)">
                 <i class="fas fa-graduation-cap" style="color:#28a745;"></i>
                 <div class="mail-name">.EDU Mail (USA)</div>
-                <div class="price">২ টাকা</div>
+                <div class="price">৫ টাকা</div>
             </div>
         </div>
 
-        <!-- কাস্টম কোয়ান্টিটি ইনপুট -->
+        <!-- এখানে ফিক্স করা হয়েছে - যেকোনো পরিমাণ লেখা যাবে -->
         <div class="qty-input-wrapper">
             <label for="customQty">কতগুলো মেইল লাগবে?</label>
-            <input type="number" id="customQty" value="1" min="1" placeholder="যেমন: ১০০" oninput="updateTotal()">
+            <input type="text" id="customQty" value="1" inputmode="numeric" placeholder="যেমন: ১০০" oninput="updateTotal()">
         </div>
 
         <div class="total-card">
@@ -165,7 +163,7 @@
     <span class="close-btn" onclick="closeModal()">×</span>
     <h2>Binance Pay</h2>
     <div class="info"><strong>Pay ID:</strong> 38017799</div>
-    <div class="info"><strong>পরিমাণ:</strong> <span id="usdtTotal">0.016</span> USDT</div>
+    <div class="info"><strong>পরিমাণ:</strong> <span id="usdtTotal">0.0007</span> USDT</div>
     <img src="https://i.ibb.co/your-binance-qr.png" class="qr-img" alt="Binance QR">
     <input type="text" id="trx2" placeholder="Order ID / Memo">
     <input type="email" id="email2" placeholder="তোমার ইমেইল">
@@ -185,9 +183,16 @@
     }
 
     function updateTotal(){
-        qty = parseInt(document.getElementById('customQty').value) || 1;
-        if(qty < 1) qty = 1;
-        document.getElementById('customQty').value = qty;
+        let input = document.getElementById('customQty');
+        let raw = input.value.replace(/[^0-9]/g, ''); // শুধু নাম্বার রাখবে
+        
+        if (raw === '' || raw === '0') {
+            qty = 1;
+            input.value = '1';
+        } else {
+            qty = parseInt(raw);
+            input.value = qty;
+        }
 
         const total = qty * price;
         document.getElementById('total').textContent = total;
@@ -212,19 +217,19 @@
                 text:`নতুন অর্ডার!\n\nপ্রোডাক্ট: ${type}\nপরিমাণ: ${qty} পিস\nমোট: ৳${qty*price}\nপেমেন্ট: ${method}\nTrxID: ${trx}\nইমেইল: ${email}\n\nসময়: ${new Date().toLocaleString('bn-BD')}`,
                 parse_mode:'HTML'
             })
-        }).then(()=>{ 
+        }).then(()=>{
             alert('অর্ডার সফল! ১-২ মিনিটে মেইল পাবে');
             closeModal();
         }).catch(()=>{ alert('ইন্টারনেট চেক করো'); });
     }
 
     // ফেক স্টক কমানো
-    setInterval(()=>{ 
-        let s = document.getElementById('stock'); 
-        if(+s.textContent > 900) s.textContent = +s.textContent - Math.floor(Math.random()*9); 
+    setInterval(()=>{
+        let s = document.getElementById('stock');
+        if(+s.textContent > 900) s.textContent = +s.textContent - Math.floor(Math.random()*8);
     }, 14000);
 
-    // প্রথম লোডে আপডেট
+    // প্রথম লোডে
     updateTotal();
 </script>
 </body>
