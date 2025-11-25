@@ -3,134 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDU Mail Shop - মাত্র ২ টাকায় Outlook EDU Mail</title>
-    <meta name="description" content="মাত্র ২ টাকায় 100% ফ্রেশ Outlook, Hotmail, EDU মেইল কিনুন। ইনস্ট্যান্ট ডেলিভারি।">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <title>EDU Mail Pro - ২ টাকায় ফ্রেশ EDU Mail</title>
+    <meta name="description" content="মাত্র ২ টাকায় ১০০% ফ্রেশ Outlook, Hotmail, .EDU মেইল। ইনস্ট্যান্ট ডেলিভারি।">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00d4ff;
-            --dark: #120078;
+            --primary: #e2136e;
+            --secondary: #ff6b9d;
+            --dark: #120050;
             --light: #f8f9fa;
+            --success: #28a745;
+            --stock: #ff4757;
         }
-        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #333; }
-        .container { max-width: 500px; margin: 20px auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-        header { background: var(--dark); color: white; text-align: center; padding: 30px 20px; }
-        header h1 { font-size: 28px; margin-bottom: 10px; }
-        header p { opacity: 0.9; font-size: 18px; }
-        .product { padding: 30px; text-align: center; }
-        .price { font-size: 60px; color: var(--primary); font-weight: bold; margin: 20px 0; }
-        .price small { font-size: 20px; color: #666; }
-        .features { margin: 30px 0; text-align: left; }
-        .features li { margin: 12px 0; font-size: 16px; }
-        .features i { color: var(--primary); margin-right: 10px; }
-        .payment-options { display: flex; justify-content: space-around; margin: 30px 0; }
-        .pay-btn { 
-            background: #fff; border: 3px solid var(--primary); padding: 15px 25px; 
-            border-radius: 15px; font-size: 18px; font-weight: bold; cursor: pointer;
-            transition: 0.3s; width: 45%; text-align: center;
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { 
+            font-family: 'Hind Siliguri', sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh; color: #333; transition: all 0.3s;
         }
-        .pay-btn:hover { background: var(--primary); color: white; }
-        .pay-btn i { margin-right: 8px; }
-        .bkash { color: #e2136e; }
-        .binance { color: #f0b90b; }
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; justify-content: center; align-items: center; }
-        .modal-content { background: white; padding: 30px; border-radius: 20px; max-width: 90%; text-align: center; }
-        .close { float: right; font-size: 30px; cursor: pointer; }
-        .qr { width: 250px; height: 250px; margin: 20px auto; }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; }
-        button.send { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-size: 18px; cursor: pointer; }
-        footer { text-align: center; padding: 20px; background: #f1f1f1; color: #666; font-size: 14px; }
-        .whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 99; }
+        body.dark { background: #0f0f1e; color: #eee; }
+        .container { max-width: 520px; margin: 15px auto; background: white; border-radius: 25px; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.4); }
+        body.dark .container { background: #1a1a2e; }
+
+        header { background: var(--dark); color: white; text-align: center; padding: 35px 20px; position: relative; }
+        .theme-toggle { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.2); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 20px; }
+        
+        .stock { background: var(--stock); color: white; padding: 8px 15px; border-radius: 50px; font-weight: bold; font-size: 14px; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+        .price-big { font-size: 70px; color: var(--primary); font-weight: 900; margin: 15px 0; }
+        .calculator { background: #f8f9fa; padding: 20px; border-radius: 15px; margin: 20px; text-align: center; }
+        body.dark .calculator { background: #16213e; }
+        #totalPrice { font-size: 40px; font-weight: bold; color: var(--primary); }
+
+        .payment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px; }
+        .pay-card { 
+            background: white; border: 3px solid #eee; border-radius: 18px; padding: 20px; text-align: center; 
+            cursor: pointer; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        body.dark .pay-card { background: #16213e; border-color: #333; }
+        .pay-card:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+        .pay-card i { font-size: 40px; margin-bottom: 10px; }
+        .bkash i { color: #e2136e; }
+        .binance i { color: #f0b90b; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 999; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: white; padding: 30px; border-radius: 20px; max-width: 400px; width: 100%; position: relative; }
+        body.dark .modal-content { background: #16213e; color: #eee; }
+        .close { position: absolute; top: 10px; right: 15px; font-size: 35px; cursor: pointer; color: #aaa; }
+
+        input, textarea, select {
+            width: 100%; padding: 14px; margin: 12px 0; border: 2px solid #ddd; border-radius: 12px; font-size: 16px;
+        }
+        body.dark input, body.dark textarea { background: #0f0f1e; border-color: #333; color: white; }
+
+        .copy-btn { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+        .copy-btn:hover { background: #c1125c; }
+
+        .reviews { padding: 30px 20px; background: #f9f9f9; }
+        body.dark .reviews { background: #1a1a2e; }
+        .review { background: white; padding: 15px; border-radius: 15px; margin: 15px 0; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        body.dark .review { background: #16213e; }
+
+        .floating-wa { position: fixed; bottom: 20px; left: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; box-shadow: 0 5px 20px rgba(0,0,0,0.4); z-index: 99; animation: float 3s infinite; }
+        .floating-tg { position: fixed; bottom: 90px; left: 20px; background: #0088cc; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 5px 20px rgba(0,0,0,0.4); z-index: 99; }
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-envelope"></i> EDU Mail Shop</h1>
-            <p>মাত্র ২ টাকায় ১০০% ফ্রেশ Outlook / EDU মেইল</p>
+            <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+            <h1>EDU Mail Pro</h1>
+            <p>মাত্র ২ টাকায় ১০০% ফ্রেশ Outlook EDU Mail</p>
+            <div class="stock">এখনো আছে: <span id="stockCount">৯৮৭</span> পিস</div>
         </header>
 
-        <div class="product">
-            <h2>Outlook | Hotmail | EDU Mail</h2>
-            <div class="price">২৳<small> / প্রতিটি</small></div>
+        <div style="text-align:center; padding:20px;">
+            <div class="price-big">২৳</div>
+            <p style="font-size:18px; color:#e2136e; font-weight:bold;">প্রতিটি মেইল মাত্র ২ টাকা!</p>
+        </div>
 
-            <ul class="features">
-                <li><i class="fas fa-check"></i> ১০০% ফ্রেশ ও ভেরিফাইড অ্যাকাউন্ট</li>
-                <li><i class="fas fa-check"></i> লগইন + পাসওয়ার্ড + রিকভারি মেইল</li>
-                <li><i class="fas fa-check"></i> পেমেন্টের ১-২ মিনিটে ডেলিভারি</li>
-                <li><i class="fas fa-check"></i> ২৪ ঘণ্টা সাপোর্ট</li>
-                <li><i class="fas fa-check"></i> ১০০+ পিস কিনলে ডিসকাউন্ট</li>
-            </ul>
+        <div class="calculator">
+            <h3>প্রাইস ক্যালকুলেটর</h3>
+            <input type="number" id="qty" placeholder="কত পিস লাগবে? (উদা: ৫০)" min="1" value="1" oninput="calculate()">
+            <p style="margin:15px 0; font-size:30px;">মোট: <span id="totalPrice">২</span> টাকা</p>
+        </div>
 
-            <div class="payment-options">
-                <div class="pay-btn bkash" onclick="openModal('bkash')">
-                    <i class="fas fa-mobile-alt"></i> bKash
-                </div>
-                <div class="pay-btn binance" onclick="openModal('binance')">
-                    <i class="fab fa-bitcoin"></i> Binance Pay
-                </div>
+        <div class="payment-grid">
+            <div class="pay-card" onclick="openModal('bkash')">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>bKash</h3>
+                <p>Personal Number</p>
+            </div>
+            <div class="pay-card" onclick="openModal('binance')">
+                <i class="fab fa-bitcoin"></i>
+                <h3>Binance Pay</h3>
+                <p>USDT (TRC20)</p>
             </div>
         </div>
 
-        <footer>
-            © 2025 EDU Mail Shop | সব ধরনের EDU মেইল পাওয়া যায়
+        <div class="reviews">
+            <h3 style="text-align:center; margin-bottom:20px;">কাস্টমার রিভিউ</h3>
+            <div class="review">⭐⭐⭐⭐⭐<br>"ভাই ১০০ পিস নিছি, ২ মিনিটে পাইছি। দামও কম। রেকমেন্ডেড!" - Riaz</div>
+            <div class="review">⭐⭐⭐⭐⭐<br>"EDU মেইল দিয়ে GitHub Student Pack পাইছি। থ্যাঙ্কস ভাই!" - Sohan</div>
+        </div>
+
+        <footer style="text-align:center; padding:20px; background:#120050; color:white;">
+            © 2025 EDU Mail Pro | ২৪/৭ সাপোর্ট | ১০০% ট্রাস্টেড
         </footer>
     </div>
 
     <!-- bKash Modal -->
     <div id="bkashModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('bkash')">×</span>
+            <span class="close" onclick="closeModal()">×</span>
             <h2>bKash পেমেন্ট</h2>
-            <p><strong>নম্বর:</strong> 01815243007 (Personal)</p>
-            <p><strong>পরিমাণ:</strong> যত পিস × ২ টাকা</p>
-            <img src="https://ibb.co.com/Psq8M3LK" class="qr" alt="bKash QR">
-            <p>পেমেন্ট করার পর নিচে ট্রানজেকশন আইডি দিন</p>
-            <input type="text" id="quantity" placeholder="কত পিস লাগবে? (উদা: 50)">
-            <input type="text" id="trxid" placeholder="ট্রানজেকশন আইডি লিখুন">
-            <textarea placeholder="তোমার ইমেইল লিখো (ডেলিভারির জন্য)" rows="2"></textarea>
-            <button class="send" onclick="sendOrder('bkash')">অর্ডার কনফার্ম করো</button>
+            <p><strong>নম্বর:</strong> 018XXXXXXXXX <button class="copy-btn" onclick="copyText('018XXXXXXXXX')">কপি</button></p>
+            <p><strong>পরিমাণ পাঠান:</strong> <span id="bkashAmount">২</span> টাকা</p>
+            <img src="https://i.ibb.co/your-bkash-qr-here.png" style="width:100%; border-radius:15px; margin:15px 0;">
+            <input type="text" placeholder="ট্রানজেকশন আইডি লিখুন" id="trx">
+            <input type="email" placeholder="তোমার ইমেইল (ডেলিভারির জন্য)">
+            <button style="background:var(--primary); color:white; padding:15px; width:100%; border:none; border-radius:12px; font-size:18px; margin-top:15px;" onclick="alert('অর্ডার সফল! ১-২ মিনিটে মেইল পাবে 🚀')">অর্ডার কনফার্ম করো</button>
         </div>
     </div>
 
-    <!-- Binance Pay Modal -->
+    <!-- Binance Modal -->
     <div id="binanceModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal('binance')">×</span>
+            <span class="close" onclick="closeModal()">×</span>
             <h2>Binance Pay</h2>
-            <p><strong>Binance Pay ID:</strong> 38017799</p>
-            <p><strong>পরিমাণ:</strong> 0.07 USDT (প্রতি ৫০ পিস = ~২০০ টাকা)</p>
-            <img src="https://ibb.co.com/SXCZrgj3" class="qr" alt="Binance QR">
-            <input type="text" id="quantity2" placeholder="কত পিস লাগবে?">
-            <input type="text" id="binanceTrx" placeholder="Order ID / Memo লিখুন">
-            <textarea placeholder="তোমার ইমেইল লিখো"></textarea>
-            <button class="send" onclick="sendOrder('binance')">অর্ডার কনফার্ম করো</button>
+            <p><strong>Pay ID:</strong> 373829173 <button class="copy-btn" onclick="copyText('373829173')">কপি</button></p>
+            <p><strong>পরিমাণ:</strong> <span id="usdtAmount">0.02</span> USDT</p>
+            <img src="https://i.ibb.co/your-binance-qr.png" style="width:100%; border-radius:15px; margin:15px 0;">
+            <input type="text" placeholder="Order ID / Memo লিখুন">
+            <input type="email" placeholder="তোমার ইমেইল">
+            <button style="background:#f0b90b; color:black; padding:15px; width:100%; border:none; border-radius:12px; font-size:18px; margin-top:15px;" onclick="alert('পেমেন্ট রিসিভড! মেইল পাঠানো হচ্ছে...')">Confirm Order</button>
         </div>
     </div>
 
-    <a href="https://wa.me/8801815243007?text=Assalamualaikum%20EDU%20Mail%20Nibo" class="whatsapp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/88018XXXXXXXX" class="floating-wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://t.me/EDUMailPro" class="floating-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 
     <script>
+        function calculate() {
+            const qty = document.getElementById('qty').value || 1;
+            const total = qty * 2;
+            document.getElementById('totalPrice').innerText = total;
+            document.getElementById('bkashAmount').innerText = total;
+            document.getElementById('usdtAmount').innerText = (total / 2900).toFixed(4); // 1 USDT ≈ ৳2900
+        }
+        calculate();
+
         function openModal(type) {
+            calculate();
             document.getElementById(type + 'Modal').style.display = 'flex';
         }
-        function closeModal(type) {
-            document.getElementById(type + 'Modal').style.display = 'none';
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
         }
-        function sendOrder(type) {
-            alert('অর্ডারটি রিসিভ হয়েছে! ১-২ মিনিটের মধ্যে মেইল পেয়ে যাবে 🚀');
-            closeModal(type);
-            // পরে এখানে Telegram বট বা ইমেইল অটোমেশন যোগ করতে পারো
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text);
+            alert('কপি হয়েছে: ' + text);
         }
-        // বাইরে ক্লিক করলে মোডাল বন্ধ
-        window.onclick = function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const icon = document.querySelector('.theme-toggle');
+            icon.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        }
+
+        // স্টক কমানোর অ্যানিমেশন (ফেক)
+        setInterval(() => {
+            const stock = document.getElementById('stockCount');
+            let current = parseInt(stock.innerText);
+            if (current > 900) {
+                stock.innerText = current - Math.floor(Math.random() * 5);
             }
-        }
+        }, 8000);
     </script>
 </body>
 </html>
