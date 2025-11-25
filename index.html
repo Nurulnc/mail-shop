@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDU Mail Shop - মাত্র ২ টাকায় Outlook EDU Mail</title>
+    <meta name="description" content="মাত্র ২ টাকায় 100% ফ্রেশ Outlook, Hotmail, EDU মেইল কিনুন। ইনস্ট্যান্ট ডেলিভারি।">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --dark: #120078;
+            --light: #f8f9fa;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; color: #333; }
+        .container { max-width: 500px; margin: 20px auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        header { background: var(--dark); color: white; text-align: center; padding: 30px 20px; }
+        header h1 { font-size: 28px; margin-bottom: 10px; }
+        header p { opacity: 0.9; font-size: 18px; }
+        .product { padding: 30px; text-align: center; }
+        .price { font-size: 60px; color: var(--primary); font-weight: bold; margin: 20px 0; }
+        .price small { font-size: 20px; color: #666; }
+        .features { margin: 30px 0; text-align: left; }
+        .features li { margin: 12px 0; font-size: 16px; }
+        .features i { color: var(--primary); margin-right: 10px; }
+        .payment-options { display: flex; justify-content: space-around; margin: 30px 0; }
+        .pay-btn { 
+            background: #fff; border: 3px solid var(--primary); padding: 15px 25px; 
+            border-radius: 15px; font-size: 18px; font-weight: bold; cursor: pointer;
+            transition: 0.3s; width: 45%; text-align: center;
+        }
+        .pay-btn:hover { background: var(--primary); color: white; }
+        .pay-btn i { margin-right: 8px; }
+        .bkash { color: #e2136e; }
+        .binance { color: #f0b90b; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 20px; max-width: 90%; text-align: center; }
+        .close { float: right; font-size: 30px; cursor: pointer; }
+        .qr { width: 250px; height: 250px; margin: 20px auto; }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #ddd; border-radius: 10px; }
+        button.send { background: var(--primary); color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-size: 18px; cursor: pointer; }
+        footer { text-align: center; padding: 20px; background: #f1f1f1; color: #666; font-size: 14px; }
+        .whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 99; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-envelope"></i> EDU Mail Shop</h1>
+            <p>মাত্র ২ টাকায় ১০০% ফ্রেশ Outlook / EDU মেইল</p>
+        </header>
+
+        <div class="product">
+            <h2>Outlook | Hotmail | EDU Mail</h2>
+            <div class="price">২৳<small> / প্রতিটি</small></div>
+
+            <ul class="features">
+                <li><i class="fas fa-check"></i> ১০০% ফ্রেশ ও ভেরিফাইড অ্যাকাউন্ট</li>
+                <li><i class="fas fa-check"></i> লগইন + পাসওয়ার্ড + রিকভারি মেইল</li>
+                <li><i class="fas fa-check"></i> পেমেন্টের ১-২ মিনিটে ডেলিভারি</li>
+                <li><i class="fas fa-check"></i> ২৪ ঘণ্টা সাপোর্ট</li>
+                <li><i class="fas fa-check"></i> ১০০+ পিস কিনলে ডিসকাউন্ট</li>
+            </ul>
+
+            <div class="payment-options">
+                <div class="pay-btn bkash" onclick="openModal('bkash')">
+                    <i class="fas fa-mobile-alt"></i> bKash
+                </div>
+                <div class="pay-btn binance" onclick="openModal('binance')">
+                    <i class="fab fa-bitcoin"></i> Binance Pay
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2025 EDU Mail Shop | সব ধরনের EDU মেইল পাওয়া যায়
+        </footer>
+    </div>
+
+    <!-- bKash Modal -->
+    <div id="bkashModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('bkash')">×</span>
+            <h2>bKash পেমেন্ট</h2>
+            <p><strong>নম্বর:</strong> 01XXXXXXXXX (Personal)</p>
+            <p><strong>পরিমাণ:</strong> যত পিস × ২ টাকা</p>
+            <img src="https://i.ibb.co.com/your-bkash-qr-link.png" class="qr" alt="bKash QR">
+            <p>পেমেন্ট করার পর নিচে ট্রানজেকশন আইডি দিন</p>
+            <input type="text" id="quantity" placeholder="কত পিস লাগবে? (উদা: 50)">
+            <input type="text" id="trxid" placeholder="ট্রানজেকশন আইডি লিখুন">
+            <textarea placeholder="তোমার ইমেইল লিখো (ডেলিভারির জন্য)" rows="2"></textarea>
+            <button class="send" onclick="sendOrder('bkash')">অর্ডার কনফার্ম করো</button>
+        </div>
+    </div>
+
+    <!-- Binance Pay Modal -->
+    <div id="binanceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('binance')">×</span>
+            <h2>Binance Pay</h2>
+            <p><strong>Binance Pay ID:</strong> 123456789</p>
+            <p><strong>পরিমাণ:</strong> 0.07 USDT (প্রতি ৫০ পিস = ~২০০ টাকা)</p>
+            <img src="https://i.ibb.co.com/your-binance-qr-link.png" class="qr" alt="Binance QR">
+            <input type="text" id="quantity2" placeholder="কত পিস লাগবে?">
+            <input type="text" id="binanceTrx" placeholder="Order ID / Memo লিখুন">
+            <textarea placeholder="তোমার ইমেইল লিখো"></textarea>
+            <button class="send" onclick="sendOrder('binance')">অর্ডার কনফার্ম করো</button>
+        </div>
+    </div>
+
+    <a href="https://wa.me/88018XXXXXXXX?text=Assalamualaikum%20EDU%20Mail%20Nibo" class="whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function openModal(type) {
+            document.getElementById(type + 'Modal').style.display = 'flex';
+        }
+        function closeModal(type) {
+            document.getElementById(type + 'Modal').style.display = 'none';
+        }
+        function sendOrder(type) {
+            alert('অর্ডারটি রিসিভ হয়েছে! ১-২ মিনিটের মধ্যে মেইল পেয়ে যাবে 🚀');
+            closeModal(type);
+            // পরে এখানে Telegram বট বা ইমেইল অটোমেশন যোগ করতে পারো
+        }
+        // বাইরে ক্লিক করলে মোডাল বন্ধ
+        window.onclick = function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
