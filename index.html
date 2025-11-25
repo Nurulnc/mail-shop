@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDU Mail Shop - ২ টাকায় মেইল</title>
+    <title>EDU Mail Shop - Instant Delivery</title>
     <meta name="description" content="Outlook, Hotmail, .EDU মেইল - মাত্র ২ টাকা থেকে!">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,77 +14,84 @@
         
         .container{
             max-width:420px;width:100%;background:rgba(255,255,255,0.98);border-radius:32px;overflow:hidden;
-            box-shadow:0 25px 60px rgba(0,0,0,0.4);backdrop-filter:blur(10px);
+            box-shadow:0 25px 60px rgba(0,0,0,0.4);backdrop-filter:blur(12px);
             animation:fadeIn 0.8s ease;
         }
         @keyframes fadeIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
 
-        header{background:var(--d);padding:28px 20px;text-align:center;position:relative;overflow:hidden;}
-        header::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent);animation:shine 8s infinite;}
+        header{background:var(--d);padding:30px 20px;text-align:center;position:relative;overflow:hidden;}
+        header::before{content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent);animation:shine 10s infinite;}
         @keyframes shine{0%{transform:translate(0,0)}100%{transform:translate(50%,50%)}}
-        header h1{font-size:26px;font-weight:700;margin-bottom:6px;}
+        header h1{font-size:27px;font-weight:700;margin-bottom:6px;}
         .tagline{font-size:16px;opacity:0.9;}
-        .stock{background:#ff3f34;padding:7px 16px;border-radius:50px;font-weight:700;font-size:14px;display:inline-block;margin-top:12px;animation:pulse 2s infinite;}
-        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+        .stock{background:#ff3f34;padding:8px 18px;border-radius:50px;font-weight:700;display:inline-block;margin-top:14px;animation:pulse 2s infinite;}
+        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 
-        .content{padding:24px 20px;}
-        .section-title{font-size:18px;font-weight:600;text-align:center;margin:20px 0 16px;color:#222;}
+        .content{padding:26px 20px;}
+        .section-title{font-size:19px;font-weight:600;text-align:center;margin:20px 0 18px;color:#222;}
 
-        .mail-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:24px;}
+        .mail-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-bottom:26px;}
         .mail-card{
-            background:#fff;border-radius:20px;padding:18px;text-align:center;cursor:pointer;transition:all 0.3s;
-            border:4px solid transparent;box-shadow:0 8px 25px rgba(0,0,0,0.1);
+            background:#fff;border-radius:22px;padding:20px;text-align:center;cursor:pointer;transition:all 0.3s;
+            border:4px solid transparent;box-shadow:0 10px 28px rgba(0,0,0,0.12);
         }
-        .mail-card:hover{transform:translateY(-6px);}
-        .mail-card.active{border-color:var(--p);box-shadow:0 12px 30px rgba(226,19,110,0.25);}
-        .mail-card i{font-size:42px;margin-bottom:12px;}
-        .mail-name{font-size:17px;font-weight:600;color:#222;margin:8px 0;}
-        .price{font-size:32px;font-weight:900;color:var(--p);}
+        .mail-card:hover{transform:translateY(-7px);}
+        .mail-card.active{border-color:var(--p);box-shadow:0 15px 35px rgba(226,19,110,0.28);}
+        .mail-card i{font-size:44px;margin-bottom:14px;}
+        .mail-name{font-size:18px;font-weight:600;color:#222;margin:10px 0;}
+        .price{font-size:34px;font-weight:900;color:var(--p);}
 
-        .qty-selector{
-            display:flex;align-items:center;justify-content:center;gap:16px;margin:24px 0;
-            background:#f8f9fa;border-radius:50px;padding:12px 20px;
+        /* কাস্টম কোয়ান্টিটি ইনপুট */
+        .qty-input-wrapper{
+            margin:28px 0;text-align:center;
         }
-        .qty-btn{width:48px;height:48px;border-radius:50%;background:var(--p);color:#fff;font-size:28px;font-weight:bold;cursor:pointer;border:none;box-shadow:0 4px 15px rgba(226,19,110,0.4);}
-        #qty-display{font-size:36px;font-weight:900;width:70px;text-align:center;color:#222;}
+        .qty-input-wrapper label{
+            display:block;font-size:17px;color:#333;margin-bottom:12px;font-weight:600;
+        }
+        #customQty{
+            width:100%;max-width:280px;padding:18px 20px;font-size:28px;font-weight:900;
+            text-align:center;border:none;border-radius:50px;background:#f8f9fa;
+            box-shadow:inset 0 4px 15px rgba(0,0,0,0.1);color:var(--p);
+            outline:none;transition:0.3s;
+        }
+        #customQty:focus{background:#fff;box-shadow:0 0 0 4px rgba(226,19,110,0.2);}
 
         .total-card{
-            background:linear-gradient(135deg,var(--p),#ff6b9d);color:#fff;padding:20px;border-radius:20px;text-align:center;margin:24px 0;
-            box-shadow:0 10px 30px rgba(226,19,110,0.3);
+            background:linear-gradient(135deg,var(--p),#ff6b9d);color:#fff;padding:24px;border-radius:24px;text-align:center;margin:28px 0;
+            box-shadow:0 12px 35px rgba(226,19,110,0.35);
         }
-        .total-label{font-size:16px;opacity:0.9;}
-        #total{font-size:48px;font-weight:900;margin:8px 0 4px;}
+        .total-label{font-size:17px;opacity:0.9;}
+        #total{font-size:52px;font-weight:900;margin:10px 0 6px;letter-spacing:1px;}
 
-        .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+        .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
         .pay-card{
-            background:#fff;border-radius:20px;padding:20px;text-align:center;cursor:pointer;transition:0.3s;
-            box-shadow:0 8px 25px rgba(0,0,0,0.1);border:3px solid #eee;
+            background:#fff;border-radius:22px;padding:22px;text-align:center;cursor:pointer;transition:0.3s;
+            box-shadow:0 10px 28px rgba(0,0,0,0.12);border:3px solid #eee;
         }
-        .pay-card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(0,0,0,0.2);}
-        .pay-card i{font-size:40px;margin-bottom:8px;}
-        .pay-name{font-size:17px;font-weight:600;color:#222;}
+        .pay-card:hover{transform:translateY(-9px);box-shadow:0 18px 40px rgba(0,0,0,0.22);}
+        .pay-card i{font-size:42px;margin-bottom:10px;}
+        .pay-name{font-size:18px;font-weight:600;color:#222;}
 
-        .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;justify-content:center;align-items:center;padding:20px;}
-        .modal-box{background:#fff;border-radius:28px;padding:30px 24px;max-width:380px;width:100%;text-align:center;position:relative;}
-        .close-btn{position:absolute;top:12px;right:16px;font-size:32px;color:#999;cursor:pointer;}
-        .modal h2{font-size:22px;margin-bottom:16px;color:#222;}
-        .info{margin:12px 0;font-size:15px;}
+        .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:999;justify-content:center;align-items:center;padding:20px;}
+        .modal-box{background:#fff;border-radius:30px;padding:32px 26px;max-width:380px;width:100%;text-align:center;position:relative;}
+        .close-btn{position:absolute;top:14px;right:18px;font-size:34px;color:#999;cursor:pointer;}
+        .modal h2{font-size:23px;margin-bottom:18px;color:#222;}
+        .info{margin:14px 0;font-size:16px;}
         .info strong{color:var(--p);}
-        .qr-img{width:100%;max-width:260px;border-radius:16px;margin:16px 0;box-shadow:0 8px 25px rgba(0,0,0,0.2);}
-        input{width:100%;padding:16px;margin:12px 0;border:2px solid #ddd;border-radius:16px;font-size:16px;}
-        .submit-btn{background:var(--p);color:#fff;border:none;padding:18px;border-radius:16px;font-size:18px;font-weight:600;cursor:pointer;width:100%;margin-top:16px;box-shadow:0 6px 20px rgba(226,19,110,0.4);}
+        .qr-img{width:100%;max-width:270px;border-radius:18px;margin:18px 0;box-shadow:0 10px 30px rgba(0,0,0,0.25);}
+        input{width:100%;padding:18px;margin:14px 0;border:2px solid #ddd;border-radius:18px;font-size:17px;}
+        .submit-btn{background:var(--p);color:#fff;border:none;padding:20px;border-radius:18px;font-size:19px;font-weight:600;cursor:pointer;width:100%;margin-top:18px;box-shadow:0 8px 25px rgba(226,19,110,0.4);transition:0.3s;}
+        .submit-btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(226,19,110,0.5);}
 
-        .float-wa{position:fixed;bottom:20px;right:20px;background:#25d366;color:#fff;width:62px;height:62px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;box-shadow:0 8px 25px rgba(37,211,102,0.5);z-index:99;animation:float 3s infinite;}
-        .float-tg{bottom:92px;background:#0088cc;box-shadow:0 8px 25px rgba(0,136,204,0.5);}
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+        .float-wa{position:fixed;bottom:22px;right:22px;background:#25d366;color:#fff;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;box-shadow:0 10px 30px rgba(37,211,102,0.5);z-index:99;animation:float 3s infinite;}
+        .float-tg{bottom:96px;background:#0088cc;box-shadow:0 10px 30px rgba(0,136,204,0.5);}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
 
         @media(max-width:380px){
-            .container{border-radius:24px;}
-            header h1{font-size:24px;}
-            .mail-card i{font-size:38px;}
-            .price{font-size:28px;}
-            #total{font-size:42px;}
-            .qty-btn{width:44px;height:44px;font-size:24px;}
+            .container{border-radius:26px;}
+            header h1{font-size:25px;}
+            #customQty{font-size:24px;padding:16px;}
+            #total{font-size:46px;}
         }
     </style>
 </head>
@@ -93,34 +100,34 @@
 <div class="container">
     <header>
         <h1>EDU Mail Shop</h1>
-        <p class="tagline">১০০% ফ্রেশ • ইনস্ট্যান্ট ডেলিভারি</p>
+        <p class="tagline">১০০% ফ্রেশ • ১-২ মিনিটে ডেলিভারি</p>
         <div class="stock">স্টক আছে: <span id="stock">৯৮৭</span>+</div>
     </header>
 
     <div class="content">
         <h3 class="section-title">মেইল টাইপ বেছে নিন</h3>
         <div class="mail-grid">
-            <div class="mail-card active" onclick="selectType('Outlook/Hotmail',2,'#0078d4')">
+            <div class="mail-card active" onclick="select('Outlook/Hotmail',2)">
                 <i class="fas fa-envelope" style="color:#0078d4;"></i>
                 <div class="mail-name">Outlook / Hotmail</div>
                 <div class="price">২ টাকা</div>
             </div>
-            <div class="mail-card" onclick="selectType('Hotmail Premium',3,'#ff8c00')">
+            <div class="mail-card" onclick="select('Hotmail Premium',3)">
                 <i class="fas fa-envelope-open" style="color:#ff8c00;"></i>
                 <div class="mail-name">Hotmail Premium</div>
                 <div class="price">৩ টাকা</div>
             </div>
-            <div class="mail-card" onclick="selectType('.EDU Mail (USA)',5,'#28a745')">
+            <div class="mail-card" onclick="select('.EDU Mail (USA)',5)">
                 <i class="fas fa-graduation-cap" style="color:#28a745;"></i>
                 <div class="mail-name">.EDU Mail (USA)</div>
                 <div class="price">৫ টাকা</div>
             </div>
         </div>
 
-        <div class="qty-selector">
-            <button class="qty-btn" onclick="qty-- ; if(qty<1)qty=1; update()">−</button>
-            <div id="qty-display">1</div>
-            <button class="qty-btn" onclick="qty++; update()">+</button>
+        <!-- কাস্টম কোয়ান্টিটি ইনপুট -->
+        <div class="qty-input-wrapper">
+            <label for="customQty">কতগুলো মেইল লাগবে?</label>
+            <input type="number" id="customQty" value="1" min="1" placeholder="যেমন: ১০০" oninput="updateTotal()">
         </div>
 
         <div class="total-card">
@@ -169,37 +176,56 @@
 <a href="https://t.me/EDUMailShopBD" class="float-wa float-tg" target="_blank"><i class="fab fa-telegram-plane"></i></a>
 
 <script>
-    let qty=1, price=2, type="Outlook/Hotmail";
-    function selectType(t,p,c){
-        document.querySelectorAll('.mail-card').forEach(e=>e.classList.remove('active'));
+    let qty = 1, price = 2, type = "Outlook/Hotmail";
+
+    function select(t, p){
+        document.querySelectorAll('.mail-card').forEach(c => c.classList.remove('active'));
         event.target.closest('.mail-card').classList.add('active');
-        type=t; price=p; update();
+        type = t; price = p; updateTotal();
     }
-    function update(){
-        const total = qty*price;
-        document.getElementById('qty-display').textContent=qty;
-        document.getElementById('total').textContent=total;
-        document.getElementById('bkashTotal').textContent=total;
-        document.getElementById('usdtTotal').textContent=(total/2900).toFixed(5);
+
+    function updateTotal(){
+        qty = parseInt(document.getElementById('customQty').value) || 1;
+        if(qty < 1) qty = 1;
+        document.getElementById('customQty').value = qty;
+
+        const total = qty * price;
+        document.getElementById('total').textContent = total;
+        document.getElementById('bkashTotal').textContent = total;
+        document.getElementById('usdtTotal').textContent = (total/2900).toFixed(5);
     }
-    function openModal(m){ document.getElementById(m+'Modal').style.display='flex'; update(); }
+
+    function openModal(m){ document.getElementById(m+'Modal').style.display='flex'; updateTotal(); }
     function closeModal(){ document.querySelectorAll('.modal').forEach(m=>m.style.display='none'); }
+
     function send(method){
+        updateTotal();
         const email = method==='bKash' ? document.getElementById('email1').value : document.getElementById('email2').value;
         const trx = method==='bKash' ? document.getElementById('trx1').value : document.getElementById('trx2').value;
         if(!email.includes('@') || trx.length<4){ alert('সব তথ্য পূরণ করো!'); return; }
+
         fetch('https://api.telegram.org/bot8533162186:AAH6mixkp1rjrm3h8jcfX6oLb-WpQzhWTPA/sendMessage',{
-            method:'POST',headers:{'Content-Type':'application/json'},
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
                 chat_id:'1651695602',
                 text:`নতুন অর্ডার!\n\nপ্রোডাক্ট: ${type}\nপরিমাণ: ${qty} পিস\nমোট: ৳${qty*price}\nপেমেন্ট: ${method}\nTrxID: ${trx}\nইমেইল: ${email}\n\nসময়: ${new Date().toLocaleString('bn-BD')}`,
                 parse_mode:'HTML'
             })
-        }).then(()=>{ alert('অর্ডার সফল! ১-২ মিনিটে মেইল পাবে'); closeModal(); })
-        .catch(()=>{ alert('ইন্টারনেট চেক করো'); });
+        }).then(()=>{ 
+            alert('অর্ডার সফল! ১-২ মিনিটে মেইল পাবে');
+            closeModal();
+        }).catch(()=>{ alert('ইন্টারনেট চেক করো'); });
     }
-    setInterval(()=>{ let s=document.getElementById('stock'); if(+s.textContent>900) s.textContent=+s.textContent-Math.floor(Math.random()*8); },15000);
-    update();
+
+    // ফেক স্টক কমানো
+    setInterval(()=>{ 
+        let s = document.getElementById('stock'); 
+        if(+s.textContent > 900) s.textContent = +s.textContent - Math.floor(Math.random()*9); 
+    }, 14000);
+
+    // প্রথম লোডে আপডেট
+    updateTotal();
 </script>
 </body>
 </html>
